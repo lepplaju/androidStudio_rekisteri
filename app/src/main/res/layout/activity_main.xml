@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C8470E88">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTintMode="screen"
+        android:visibility="visible"
+        tools:context=".MainActivity">
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Etunimi"
+            android:inputType="text"
+            android:textColor="#DADADA"
+            android:textColorHint="#46DADADA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/viewUsers" />
+
+        <EditText
+            android:id="@+id/editTextText2"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Sukunimi"
+            android:inputType="text"
+            android:textColor="#DADADA"
+            android:textColorHint="#46DADADA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+
+        <EditText
+            android:id="@+id/editTextText3"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="Sähköpostiosoite"
+            android:inputType="text"
+            android:textColor="#DADADA"
+            android:textColorHint="#46DADADA"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editTextText3">
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Tietotekniikka"
+                android:textColor="#DADADA"
+                android:theme="@style/MyRadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Tuotantotalous"
+                android:textColor="#DADADA"
+                android:theme="@style/MyRadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Laskennallinen tekniikka"
+                android:textColor="#DADADA"
+                android:theme="@style/MyRadioButton" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Sähkötekniikka"
+                android:textColor="#DADADA"
+                android:theme="@style/MyRadioButton" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="142dp"
+            android:layout_height="74dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="#358339"
+            android:onClick="buttonClickFunc"
+            android:text="Lisää käyttäjä"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FF1616"
+            android:textColorLink="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listOfIcons" />
+
+        <Button
+            android:id="@+id/viewUsers"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#16911C"
+            android:onClick="switchView"
+            android:text="Näytä käyttäjät"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#FFFFFF"
+            android:textColorHint="#FF1616"
+            android:textColorLink="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:id="@+id/listOfIcons"
+            android:layout_width="140dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
