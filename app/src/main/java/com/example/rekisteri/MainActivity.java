@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        storage = UserStorage.getInstance();
+        storage.loadUsers(MainActivity.this);
+
         inputFirstName = findViewById(R.id.editTextText);
         inputLastName = findViewById(R.id.editTextText2);
         inputEmail = findViewById(R.id.editTextText3);
@@ -86,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
             User student = new User(firstName, lastName, email, major, selectedImageResourceId);
             storage.addUser(student);
             clearTextFields();
+            storage.saveUsers(MainActivity.this);
         }
 
 
