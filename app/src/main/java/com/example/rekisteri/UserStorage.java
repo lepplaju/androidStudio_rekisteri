@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class UserStorage {
 
@@ -25,6 +27,7 @@ public class UserStorage {
     }
 
     public ArrayList<User> getUsers() {
+        Collections.sort(users, Comparator.comparing(User::getLastName).thenComparing(User::getFirstName));
         return users;
     }
 
