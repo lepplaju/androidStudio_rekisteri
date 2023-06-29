@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -25,18 +28,28 @@ public class MainActivity extends AppCompatActivity {
     private EditText inputLastName;
     private EditText inputEmail;
 
-    private RadioGroup radioButtons;
+    private TextView tutkinnotText;
 
+    private RadioGroup radioButtons;
+    private CheckBox kandi;
+    private CheckBox dippa;
+    private CheckBox tekniikanTohtori;
+    private CheckBox uimaMaisteri;
     private Spinner listOfIcons;
     private int selectedImageResourceId = 0;
+    private ArrayList<String> checkedTutkinnot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         storage = UserStorage.getInstance();
         storage.loadUsers(MainActivity.this);
+
+        tutkinnotText = findViewById(R.id.tutkinnotTextView);
+        tutkinnotText.setPaintFlags(tutkinnotText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         inputFirstName = findViewById(R.id.editTextText);
         inputLastName = findViewById(R.id.editTextText2);
@@ -53,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
         imageNames.add("iconsinone__2_2_");
         CustomSpinnerAdapter adapter = new CustomSpinnerAdapter(this, imageNames);
         listOfIcons.setAdapter(adapter);
+
+
+        kandi = findViewById(R.id.kandiCB);
+        dippa = findViewById(R.id.dippaCB);
+        tekniikanTohtori = findViewById(R.id.tekniikanTohtoriCB);
+        uimaMaisteri = findViewById(R.id.uimaCB);
 
         listOfIcons.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -77,6 +96,20 @@ public class MainActivity extends AppCompatActivity {
         int id = radioButtons.getCheckedRadioButtonId();
         RadioButton rb = findViewById(id);
 
+        checkedTutkinnot = new ArrayList<>();
+        if (kandi.isChecked()) {
+            checkedTutkinnot.add(kandi.getText().toString());
+        }
+        if (dippa.isChecked()) {
+            checkedTutkinnot.add(dippa.getText().toString());
+        }
+        if(tekniikanTohtori.isChecked()){
+            checkedTutkinnot.add(tekniikanTohtori.getText().toString());
+        }
+        if(uimaMaisteri.isChecked()){
+            checkedTutkinnot.add(uimaMaisteri.getText().toString());
+        }
+
         if (TextUtils.isEmpty(firstName) || TextUtils.isEmpty(lastName) || TextUtils.isEmpty(email) || id < 0) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Täytä kaikki kentät!");
@@ -86,7 +119,13 @@ public class MainActivity extends AppCompatActivity {
             storage = UserStorage.getInstance();
             String major;
             major = rb.getText().toString();
-            User student = new User(firstName, lastName, email, major, selectedImageResourceId);
+            User student;
+            if(checkedTutkinnot.size()>0){
+                Log.i("info",String.valueOf(checkedTutkinnot.size()));
+                student = new User(firstName, lastName, email, major, selectedImageResourceId,checkedTutkinnot);
+            }else{
+                student = new User(firstName, lastName, email, major, selectedImageResourceId);
+            }
             storage.addUser(student);
             clearTextFields();
             storage.saveUsers(MainActivity.this);
@@ -100,7 +139,10 @@ public class MainActivity extends AppCompatActivity {
         inputLastName.getText().clear();
         inputEmail.getText().clear();
         radioButtons.clearCheck();
-
+        kandi.setChecked(false);
+        dippa.setChecked(false);
+        tekniikanTohtori.setChecked(false);
+        uimaMaisteri.setChecked(false);
     }
 
     public void switchView(View view) {

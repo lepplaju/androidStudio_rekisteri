@@ -27,9 +27,19 @@ public class UserListAdapter extends RecyclerView.Adapter<UserViewHelper> {
     @Override
     public void onBindViewHolder(@NonNull UserViewHelper holder, int position) {
         holder.fullName.setText(users.get(position).getFirstName() + " " + users.get(position).getLastName());
-        holder.email.setText(users.get(position).getEmail()) ;
-        holder.major.setText(users.get(position).getDegreeProgram()) ;
+        holder.email.setText(users.get(position).getEmail());
+        holder.major.setText(users.get(position).getDegreeProgram());
         holder.avatar.setImageResource(users.get(position).getImage());
+        if (users.get(position).getTutkinnot() != null) {
+            if(users.get(position).getTutkinnot().size()>0) {
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("suoritetut tutkinnot:");
+                for (String tutkinto : users.get(position).getTutkinnot()) {
+                    stringBuilder.append("\n").append(tutkinto);
+                }
+                holder.tutkinnot.setText(stringBuilder.toString());
+            }
+        }
     }
 
     @Override
