@@ -1,7 +1,11 @@
 package com.example.rekisteri;
 
 
-public class User {
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
+public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
@@ -9,12 +13,24 @@ public class User {
 
     private int image;
 
+    private ArrayList<String> tutkinnot;
+
     public User(String firstName, String lastName, String email, String degreeProgram, int image) {
         this.degreeProgram = degreeProgram;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
         this.image = image;
+        tutkinnot = new ArrayList<>();
+    }
+
+    public User(String firstName, String lastName, String email, String degreeProgram, int image, ArrayList<String> tutkinnot) {
+        this.degreeProgram = degreeProgram;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.image = image;
+        this.tutkinnot = tutkinnot;
     }
 
     public int getImage() {
@@ -36,4 +52,6 @@ public class User {
     public String getDegreeProgram() {
         return degreeProgram;
     }
+
+    public ArrayList<String> getTutkinnot() {return tutkinnot;}
 }

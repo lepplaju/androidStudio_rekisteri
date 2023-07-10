@@ -102,7 +102,7 @@
             android:id="@+id/button"
             android:layout_width="142dp"
             android:layout_height="74dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="#358339"
             android:onClick="buttonClickFunc"
             android:text="Lisää käyttäjä"
@@ -113,7 +113,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/listOfIcons" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <Button
             android:id="@+id/viewUsers"
@@ -140,6 +140,67 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tutkinnotTextView">
+
+            <CheckBox
+                android:id="@+id/kandiCB"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Kandidaatin tutkinto"
+                android:textAlignment="textStart"
+                android:textColor="#DADADA"
+                android:theme="@style/checkBoxStyle" />
+
+            <CheckBox
+                android:id="@+id/dippaCB"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Diplomi-insiröönin tutkinto"
+                android:textAlignment="textStart"
+                android:textColor="#DADADA"
+                android:theme="@style/checkBoxStyle" />
+
+            <CheckBox
+                android:id="@+id/tekniikanTohtoriCB"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Tekniikan tohtorin tutkinto"
+                android:textAlignment="textStart"
+                android:textColor="#DADADA"
+                android:theme="@style/checkBoxStyle" />
+
+            <CheckBox
+                android:id="@+id/uimaCB"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Uimamaisteri"
+                android:textAlignment="textStart"
+                android:textColor="#DADADA"
+                android:theme="@style/checkBoxStyle" />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/tutkinnotTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Valitse suoritetut tutkinnot:"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/listOfIcons"
+            app:layout_constraintStart_toStartOf="@+id/listOfIcons"
+            app:layout_constraintTop_toBottomOf="@+id/listOfIcons" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
