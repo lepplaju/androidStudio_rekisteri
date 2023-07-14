@@ -27,6 +27,7 @@ public class UserStorage {
     }
 
     public ArrayList<User> getUsers() {
+        // palautetaan käyttäjälista aakkosjärjestyksessä
         Collections.sort(users, Comparator.comparing(User::getLastName).thenComparing(User::getFirstName));
         return users;
     }

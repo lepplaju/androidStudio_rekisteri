@@ -13,6 +13,7 @@ public class User implements Serializable {
 
     private int image;
 
+// "tutkinnot" on käyttäjä-luokan uusi attribuutti
     private ArrayList<String> tutkinnot;
 
     public User(String firstName, String lastName, String email, String degreeProgram, int image) {
