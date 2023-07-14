@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         storage = UserStorage.getInstance();
+
+        // Tiedoston lataus heti sovelluksen käynnistyessä
         storage.loadUsers(MainActivity.this);
 
         tutkinnotText = findViewById(R.id.tutkinnotTextView);
@@ -96,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         int id = radioButtons.getCheckedRadioButtonId();
         RadioButton rb = findViewById(id);
 
+        // Checkbox osuus. Kaikki checkboxit täysin erillisiä olioita
         checkedTutkinnot = new ArrayList<>();
         if (kandi.isChecked()) {
             checkedTutkinnot.add(kandi.getText().toString());
@@ -128,6 +131,8 @@ public class MainActivity extends AppCompatActivity {
             }
             storage.addUser(student);
             clearTextFields();
+
+            // Tallennus heti uuden käyttäjän lisäämisen jälkeen
             storage.saveUsers(MainActivity.this);
         }
 
